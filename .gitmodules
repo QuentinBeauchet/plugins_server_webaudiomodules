@@ -1,12 +1,12 @@
 [submodule "TER"]
 	path = TER
 	url = https://github.com/michael-marynowicz/TER.git
+[submodule "plugins/api"]
+	path = plugins/api
+	url = https://github.com/webaudiomodules/api.git
 [submodule "plugins/sdk"]
 	path = plugins/sdk
 	url = https://github.com/webaudiomodules/sdk.git
 [submodule "plugins/sdk-parammgr"]
 	path = plugins/sdk-parammgr
 	url = https://github.com/webaudiomodules/sdk-parammgr.git
-[submodule "plugins/api"]
-	path = plugins/api
-	url = https://github.com/webaudiomodules/api.git
