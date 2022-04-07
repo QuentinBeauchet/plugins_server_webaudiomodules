@@ -14,7 +14,7 @@ app.get("/repositories", (req, res) => {
   res.send(repositories);
 });
 
-app.get("/plugins", (req, res) => {
+app.get("/wams", (req, res) => {
   res.send(plugins.map((plugin) => `https://${req.get("Host")}/plugins/${plugin}/`));
 });
 
