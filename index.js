@@ -23,5 +23,5 @@ app.use("/", express.static(path.join(__dirname, "./TER")));
 app.use("/plugins", express.static(path.join(__dirname, "./plugins")));
 
 app.listen(port, () => {
-  console.log(`App: http://localhost:${port}`);
+  console.log(`App working on http://localhost:${port}`);
 });
