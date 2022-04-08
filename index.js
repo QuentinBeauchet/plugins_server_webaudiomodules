@@ -10,12 +10,25 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
+app.use(function (req, res, next) {
+  res.header("Cross-Origin-Resource-Policy", "cross-origin");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  next();
+});
+
 app.get("/repositories", (req, res) => {
   res.send(repositories);
 });
 
 app.get("/wams", (req, res) => {
-  res.send(plugins.map((plugin) => `https://${req.get("Host")}/plugins/${plugin}/`));
+  res.send(
+    plugins.map((plugin) => `https://${req.get("Host")}/plugins/${plugin}/`)
+  );
 });
 
 app.use("/", express.static(path.join(__dirname, "./TER")));
