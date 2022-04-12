@@ -10,6 +10,8 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
+app.enable("trust proxy");
+
 app.use((req, res, next) => {
   res.header("Cross-Origin-Resource-Policy", "cross-origin");
   res.header("Access-Control-Allow-Origin", "*");
