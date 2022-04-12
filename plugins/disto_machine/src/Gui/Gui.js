@@ -1,5 +1,5 @@
 // https://github.com/g200kg/webaudio-controls/blob/master/webaudio-controls.js
-import '../utils/webaudio-controls.js';
+import "../utils/webaudio-controls.js";
 
 // This works when youuse a bundler such as rollup
 // If you do no want to use a bundler, then  look at other examples
@@ -239,59 +239,57 @@ let template = `
 	<div class="label" id="label_713">Disto Machine</div>
 `;
 
-
-let backgroundImg = './assets/DistoMachine.png';
-let knobImg = './assets/Jambalaya.png';
-let switchImg = './assets/switch_2.png';
+let backgroundImg = "./assets/DistoMachine.png";
+let knobImg = "./assets/Jambalaya.png";
+let switchImg = "./assets/switch_2.png";
 
 const getAssetUrl = (asset) => {
-	const base = new URL('.', import.meta.url);
-	return `${base}${asset}`;
+  const base = new URL(".", import.meta.url);
+  return `${base}${asset}`;
 };
-
 
 // The GUI is a WebComponent. Not mandatory but useful.
 // MANDORY : the GUI should be a DOM node. WebComponents are
 // practical as they encapsulate everyhing in a shadow dom
 export default class DistoMachineHTMLElement extends HTMLElement {
-	// plugin = the same that is passed in the DSP part. It's the instance
-	// of the class that extends WebAudioModule. It's an Observable plugin
+  // plugin = the same that is passed in the DSP part. It's the instance
+  // of the class that extends WebAudioModule. It's an Observable plugin
 
-	constructor(plug) {
+  constructor(plug) {
+    super();
 
-		super();
+    //this.fixFontURL();
+    this.root = this.attachShadow({ mode: "open" });
+    this.root.innerHTML = `<style>${style}</style>${template}`;
 
-		//this.fixFontURL();
-		this.root = this.attachShadow({ mode: 'open' });
-		this.root.innerHTML = `<style>${style}</style>${template}`;
+    // MANDATORY for the GUI to observe the plugin state
+    this.plugin = plug;
 
-		// MANDATORY for the GUI to observe the plugin state
-		this.plugin = plug;
+    this._plug = plug;
+    this._plug.gui = this;
 
-		this._plug = plug;
-		this._plug.gui = this;
+    this.knobs = this.root.querySelectorAll(".knob");
+    this.isOn;
+    this.state = new Object();
 
-		this.knobs = this.root.querySelectorAll(".knob");
-		this.isOn;
-		this.state = new Object();
+    this.menu = this.root.querySelector("#menuPresets");
+    this.index = this.menu.value;
+    this.setKnobs();
+    this.setSwitchListener();
+    this.setResources();
+    //this.avoidDrag();
 
-		this.menu = this.root.querySelector("#menuPresets");
-		this.index = this.menu.value;
-		this.setKnobs();
-		this.setSwitchListener();
-		this.setResources();
-		//this.avoidDrag();
+    console.log("### calling reactivate");
+    //this.reactivate();
 
-		console.log("### calling reactivate")
-		//this.reactivate();
+    window.requestAnimationFrame(this.handleAnimationFrame);
+  }
 
-		window.requestAnimationFrame(this.handleAnimationFrame);
-	}
+  fixFontURL() {
+    let font = getAssetUrl("assets/BouWeste.ttf");
 
-	fixFontURL() {
-		let font = getAssetUrl('assets/BouWeste.ttf');
-
-		style = `
+    style =
+      `
 		@font-face {
 			font-family: 'BouWeste';
 			src: url('${font}') format('truetype');
@@ -300,107 +298,90 @@ export default class DistoMachineHTMLElement extends HTMLElement {
 
 		}
 		` + style;
-		console.log("########### STYLE ###########");
-		console.log(style);
-	}
+    console.log("########### STYLE ###########");
+    console.log(style);
+  }
 
-static get observedAttributes() {
+  static get observedAttributes() {
+    return ["state"];
+  }
 
-	return ['state'];
+  simulatePresetMenuChoice(val) {
+    this.root.querySelector("#menuPresets").value = val;
+    this.plugin.audioNode.setParamsValues({ preset: val });
+    //this._plug.setParam("preset", val);
+  }
 
-}
+  connectedCallback() {
+    console.log("connected callback");
+    this.simulatePresetMenuChoice(5);
+  }
 
-simulatePresetMenuChoice(val) {
-	this.root.querySelector("#menuPresets").value = val;
-	this.plugin.audioNode.setParamsValues({ preset: val});
-	//this._plug.setParam("preset", val);
-}
+  attributeChangedCallback() {
+    this.state = JSON.parse(this.getAttribute("state"));
+    console.log("attributeChangedCallback state = " + this.getAttribute("state"));
 
-connectedCallback() {
-	console.log("connected callback")
-	this.simulatePresetMenuChoice(5);
-}
+    try {
+      if (this.state.status == "enable") {
+        this.root.querySelector("#switch1").querySelector("webaudio-switch").value = 1;
+        this.isOn = true;
+      } else {
+        this.root.querySelector("#switch1").querySelector("webaudio-switch").value = 0;
+        this.isOn = false;
+      }
+      this.knobs = this._root.querySelectorAll(".knob");
+      for (var i = 0; i < this.knobs.length; i++) {
+        this.knobs[i].querySelector("webaudio-knob").setValue(this.state[this.knobs[i].id], false);
+      }
+      if (this.state.preset) {
+        var preset = this.root.querySelector("#menuPresets");
+        preset.value = this.state.preset;
+      }
+    } catch (err) {}
+  }
+  updateStatus = (status) => {
+    this.root.querySelector("#switch1").value = status;
+  };
 
-attributeChangedCallback() {
-	this.state = JSON.parse(this.getAttribute('state'));
-	console.log("attributeChangedCallback state = " + this.getAttribute('state'))
+  handleAnimationFrame = () => {
+    const { volume, master, drive, bass, middle, treble, reverb, presence, enabled } =
+      this.plugin.audioNode.getParamsValues();
+    this.shadowRoot.querySelector("#knob1").value = volume;
+    this.shadowRoot.querySelector("#knob2").value = master;
+    this.shadowRoot.querySelector("#knob3").value = drive;
+    this.shadowRoot.querySelector("#knob4").value = bass;
+    this.shadowRoot.querySelector("#knob5").value = middle;
+    this.shadowRoot.querySelector("#knob6").value = treble;
+    this.shadowRoot.querySelector("#knob7").value = reverb;
+    this.shadowRoot.querySelector("#knob8").value = presence;
+    this.shadowRoot.querySelector("#switch1").value = enabled;
+    window.requestAnimationFrame(this.handleAnimationFrame);
+  };
 
-	try {
-		if (this.state.status == "enable") {
-			this.root.querySelector("#switch1").querySelector("webaudio-switch").value = 1;
-			this.isOn = true;
-		} else {
-			this.root.querySelector("#switch1").querySelector("webaudio-switch").value = 0;
-			this.isOn = false;
-		}
-		this.knobs = this._root.querySelectorAll(".knob");
-		for (var i = 0; i < this.knobs.length; i++) {
-			this.knobs[i].querySelector("webaudio-knob").setValue(this.state[this.knobs[i].id], false);
+  /**
+   * Change relative URLS to absolute URLs for CSS assets, webaudio controls spritesheets etc.
+   */
+  setResources() {
+    // Set up the background img & style
+    const background = this.root.querySelector("img");
+    background.src = getAssetUrl(backgroundImg);
+    //background.src = bgImage;
+    background.style = "border-radius : 10px;";
+    // Setting up the knobs imgs, those are loaded from the assets
+    this.root.querySelectorAll(".knob").forEach((knob) => {
+      knob.querySelector("webaudio-knob").setAttribute("src", getAssetUrl(knobImg));
+      knob.style.fontFamily = "BouWeste";
+    });
+    // Setting up the switches imgs, those are loaded from the assets
+    this.root.querySelector("webaudio-switch").setAttribute("src", getAssetUrl(switchImg));
 
-		}
-		if (this.state.preset) {
-			var preset = this.root.querySelector("#menuPresets");
-			preset.value = this.state.preset;
-		}
-	} catch (err) {
-	}
-}
-	updateStatus = (status) => {
-		this.root.querySelector('#switch1').value = status;
-	}
+    let menuPresets = this.root.querySelector("#menuPresets");
+    menuPresets.onchange = (e) => {
+      this.index = e.target.value;
+      this._plug.setParam("preset", this.index);
+    };
 
-	handleAnimationFrame = () => {
-
-		const {
-			volume,
-			master,
-			drive,
-			bass,
-			middle,
-			treble,
-			reverb,
-			presence,
-			enabled,
-		} = this.plugin.audioNode.getParamsValues();
-		this.shadowRoot.querySelector('#knob1').value = volume;
-		this.shadowRoot.querySelector('#knob2').value = master;
-		this.shadowRoot.querySelector('#knob3').value = drive;
-		this.shadowRoot.querySelector('#knob4').value = bass;
-		this.shadowRoot.querySelector('#knob5').value = middle;
-		this.shadowRoot.querySelector('#knob6').value = treble;
-		this.shadowRoot.querySelector('#knob7').value = reverb;
-		this.shadowRoot.querySelector('#knob8').value = presence;
-		this.shadowRoot.querySelector('#switch1').value = enabled;
-		window.requestAnimationFrame(this.handleAnimationFrame);
-
-	}
-
-	/**
-	 * Change relative URLS to absolute URLs for CSS assets, webaudio controls spritesheets etc.
-	 */
-	setResources() {
-
-		// Set up the background img & style
-		const background = this.root.querySelector("img");
-		background.src = getAssetUrl(backgroundImg);
-		//background.src = bgImage;
-		background.style = 'border-radius : 10px;'
-		// Setting up the knobs imgs, those are loaded from the assets
-		this.root.querySelectorAll(".knob").forEach((knob) => {
-			knob.querySelector("webaudio-knob").setAttribute('src', getAssetUrl(knobImg));
-			knob.style.fontFamily = "BouWeste";
-		});
-		// Setting up the switches imgs, those are loaded from the assets
-		this.root.querySelector("webaudio-switch").setAttribute('src', getAssetUrl(switchImg));
-
-
-		let menuPresets = this.root.querySelector("#menuPresets");
-		menuPresets.onchange = (e) => {
-			this.index = e.target.value;
-			this._plug.setParam("preset", this.index);
-		}
-
-		/*
+    /*
 		var background = this.root.querySelector("img");
 		background.src = this._plug.URL + '/assets/DistoMachine.png';
 		background.src = getAssetUrl(backgroundImg);
@@ -412,67 +393,49 @@ attributeChangedCallback() {
 		this._root.querySelector("#switch1").querySelector("webaudio-switch").setAttribute('src', this._plug.URL +
 			'/assets/switch_2.png');
 			*/
-	}
+  }
 
-	get properties() {
-		this.boundingRect = {
-			dataWidth: {
-				type: Number,
-				value: 450
-			},
-			dataHeight: {
-				type: Number,
-				value: 150
-			}
-		};
-		return this.boundingRect;
+  get properties() {
+    this.boundingRect = {
+      dataWidth: {
+        type: Number,
+        value: 450,
+      },
+      dataHeight: {
+        type: Number,
+        value: 150,
+      },
+    };
+    return this.boundingRect;
+  }
 
-	}
-
-	setKnobs() {
-
-		// volume
-		this.root
-			.querySelector('#knob1')
-			.addEventListener('input', (e) => {
-				this.plugin.audioNode.setParamsValues({ volume: e.target.value});
-			});
-			this.root
-			.querySelector('#knob2')
-			.addEventListener('input', (e) => {
-				this.plugin.audioNode.setParamsValues({ master: e.target.value});
-			});
-			this.root
-			.querySelector('#knob3')
-			.addEventListener('input', (e) => {
-				this.plugin.audioNode.setParamsValues({ drive: e.target.value});
-			});
-			this.root
-			.querySelector('#knob4')
-			.addEventListener('input', (e) => {
-				this.plugin.audioNode.setParamsValues({ bass: e.target.value});
-			});
-			this.root
-			.querySelector('#knob5')
-			.addEventListener('input', (e) => {
-				this.plugin.audioNode.setParamsValues({ middle: e.target.value});
-			});
-			this.root
-			.querySelector('#knob6')
-			.addEventListener('input', (e) => {
-				this.plugin.audioNode.setParamsValues({ treble: e.target.value});
-			});
-			this.root
-			.querySelector('#knob7')
-			.addEventListener('input', (e) => {
-				this.plugin.audioNode.setParamsValues({ reverb: e.target.value});
-			});
-			this.root
-			.querySelector('#knob8')
-			.addEventListener('input', (e) => {
-				this.plugin.audioNode.setParamsValues({ presence: e.target.value});
-			});
-			/*
+  setKnobs() {
+    // volume
+    this.root.querySelector("#knob1").addEventListener("input", (e) => {
+      this.plugin.audioNode.setParamsValues({ volume: e.target.value });
+    });
+    this.root.querySelector("#knob2").addEventListener("input", (e) => {
+      this.plugin.audioNode.setParamsValues({ master: e.target.value });
+    });
+    this.root.querySelector("#knob3").addEventListener("input", (e) => {
+      this.plugin.audioNode.setParamsValues({ drive: e.target.value });
+    });
+    this.root.querySelector("#knob4").addEventListener("input", (e) => {
+      this.plugin.audioNode.setParamsValues({ bass: e.target.value });
+    });
+    this.root.querySelector("#knob5").addEventListener("input", (e) => {
+      this.plugin.audioNode.setParamsValues({ middle: e.target.value });
+    });
+    this.root.querySelector("#knob6").addEventListener("input", (e) => {
+      this.plugin.audioNode.setParamsValues({ treble: e.target.value });
+    });
+    this.root.querySelector("#knob7").addEventListener("input", (e) => {
+      this.plugin.audioNode.setParamsValues({ reverb: e.target.value });
+    });
+    this.root.querySelector("#knob8").addEventListener("input", (e) => {
+      this.plugin.audioNode.setParamsValues({ presence: e.target.value });
+    });
+    /*
 		this.root
 			.querySelector('#knob2')
 			.addEventListener('input', (e) => {
@@ -489,29 +452,27 @@ attributeChangedCallback() {
 				this.plugin.audioNode.setParamsValues({ highGain: e.target.value });
 			});
 			*/
-	}
+  }
 
-	setSwitchListener() {
-		console.log("DistoMachine : set switch listener");
-		const { plugin } = this;
-		// by default, plugin is disabled
-		plugin.audioNode.setParamsValues({ enabled: 1 });
+  setSwitchListener() {
+    console.log("DistoMachine : set switch listener");
+    const { plugin } = this;
+    // by default, plugin is disabled
+    //plugin.audioNode.setParamsValues({ enabled: 1 });
 
-		this.root
-			.querySelector('#switch1')
-			.addEventListener('change', function onChange() {
-				plugin.audioNode.setParamsValues({ enabled: +!!this.checked });
-			});
-	}
+    this.root.querySelector("#switch1").addEventListener("change", function onChange() {
+      plugin.audioNode.setParamsValues({ enabled: +!!this.checked });
+    });
+  }
 
-	// name of the custom HTML element associated
-	// with the plugin. Will appear in the DOM if
-	// the plugin is visible
-	static is() {
-        return 'wasabi-distomachine-without-builder';
-    }
+  // name of the custom HTML element associated
+  // with the plugin. Will appear in the DOM if
+  // the plugin is visible
+  static is() {
+    return "wasabi-distomachine-without-builder";
+  }
 }
 
 if (!customElements.get(DistoMachineHTMLElement.is())) {
-	customElements.define(DistoMachineHTMLElement.is(), DistoMachineHTMLElement);
+  customElements.define(DistoMachineHTMLElement.is(), DistoMachineHTMLElement);
 }
