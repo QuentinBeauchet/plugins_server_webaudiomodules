@@ -1,7 +1,7 @@
 [submodule "TER"]
 	path = TER
 	url = https://github.com/michael-marynowicz/TER.git
-	branch = v1
+	branch = v1-relative
 [submodule "plugins/api"]
 	path = plugins/api
 	url = https://github.com/webaudiomodules/api.git
