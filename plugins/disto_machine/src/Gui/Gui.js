@@ -1,5 +1,5 @@
 // https://github.com/g200kg/webaudio-controls/blob/master/webaudio-controls.js
-import "../utils/webaudio-controls.js";
+import "../../../utils/webaudio-controls.js";
 
 // This works when youuse a bundler such as rollup
 // If you do no want to use a bundler, then  look at other examples

@@ -1,4 +1,4 @@
-import "../utils/webaudio-controls.js";
+import "../../utils/webaudio-controls.js";
 
 const getBaseURL = () => {
   const base = new URL(".", import.meta.url);
@@ -1002,9 +1002,7 @@ export default class compressorGui extends HTMLElement {
 
   fixRelativeImagePathsInCSS() {
     // change webaudiocontrols relative paths for spritesheets to absolute
-    let webaudioControls = this._root.querySelectorAll(
-      "webaudio-knob, webaudio-slider, webaudio-switch, img"
-    );
+    let webaudioControls = this._root.querySelectorAll("webaudio-knob, webaudio-slider, webaudio-switch, img");
     webaudioControls.forEach((e) => {
       let currentImagePath = e.getAttribute("src");
       if (currentImagePath !== undefined) {
@@ -1029,16 +1027,12 @@ export default class compressorGui extends HTMLElement {
     let usedFonts = "";
     let fonts = this._root.querySelectorAll("label[font]");
     fonts.forEach((e) => {
-      if (!usedFonts.includes(e.getAttribute("font")))
-        usedFonts += "family=" + e.getAttribute("font") + "&";
+      if (!usedFonts.includes(e.getAttribute("font"))) usedFonts += "family=" + e.getAttribute("font") + "&";
     });
     let link = document.createElement("link");
     link.rel = "stylesheet";
     if (usedFonts.slice(0, -1))
-      link.href =
-        "https://fonts.googleapis.com/css2?" +
-        usedFonts.slice(0, -1) +
-        "&display=swap";
+      link.href = "https://fonts.googleapis.com/css2?" + usedFonts.slice(0, -1) + "&display=swap";
     document.querySelector("head").appendChild(link);
 
     // BMT Adapt for background-image
@@ -1048,9 +1042,7 @@ export default class compressorGui extends HTMLElement {
         let currentImagePath = e.style.backgroundImage.slice(4, -1);
         if (currentImagePath !== undefined) {
           let imagePath = e.style.backgroundImage.slice(5, -2);
-          if (imagePath != "")
-            e.style.backgroundImage =
-              "url(" + this.basePath + "/" + imagePath + ")";
+          if (imagePath != "") e.style.backgroundImage = "url(" + this.basePath + "/" + imagePath + ")";
         }
       }
     });
@@ -1059,8 +1051,7 @@ export default class compressorGui extends HTMLElement {
   setImageBackground() {
     // check if the shadowroot host has a background image
     let mainDiv = this._root.querySelector("#main");
-    mainDiv.style.backgroundImage =
-      "url(" + this.basePath + "/" + imageRelativeURI + ")";
+    mainDiv.style.backgroundImage = "url(" + this.basePath + "/" + imageRelativeURI + ")";
 
     //console.log("background =" + mainDiv.style.backgroundImage);
     //this._root.style.backgroundImage = "toto.png";
@@ -1088,23 +1079,17 @@ export default class compressorGui extends HTMLElement {
     }
   }
   handleAnimationFrame = () => {
-    this._root.getElementById("/compressor/bass").value =
-      this._plug.audioNode.getParamValue("/compressor/bass");
+    this._root.getElementById("/compressor/bass").value = this._plug.audioNode.getParamValue("/compressor/bass");
 
-    this._root.getElementById("/compressor/drive").value =
-      this._plug.audioNode.getParamValue("/compressor/drive");
+    this._root.getElementById("/compressor/drive").value = this._plug.audioNode.getParamValue("/compressor/drive");
 
-    this._root.getElementById("/compressor/middle").value =
-      this._plug.audioNode.getParamValue("/compressor/middle");
+    this._root.getElementById("/compressor/middle").value = this._plug.audioNode.getParamValue("/compressor/middle");
 
-    this._root.getElementById("/compressor/treble").value =
-      this._plug.audioNode.getParamValue("/compressor/treble");
+    this._root.getElementById("/compressor/treble").value = this._plug.audioNode.getParamValue("/compressor/treble");
 
-    this._root.getElementById("/compressor/voice").value =
-      this._plug.audioNode.getParamValue("/compressor/voice");
+    this._root.getElementById("/compressor/voice").value = this._plug.audioNode.getParamValue("/compressor/voice");
 
-    this._root.getElementById("/compressor/volume").value =
-      this._plug.audioNode.getParamValue("/compressor/volume");
+    this._root.getElementById("/compressor/volume").value = this._plug.audioNode.getParamValue("/compressor/volume");
 
     this._root.getElementById("/compressor/99_bypass").value =
       1 - this._plug.audioNode.getParamValue("/compressor/99_bypass");
@@ -1133,34 +1118,22 @@ export default class compressorGui extends HTMLElement {
   setKnobs() {
     this._root
       .getElementById("/compressor/bass")
-      .addEventListener("input", (e) =>
-        this._plug.audioNode.setParamValue("/compressor/bass", e.target.value)
-      );
+      .addEventListener("input", (e) => this._plug.audioNode.setParamValue("/compressor/bass", e.target.value));
     this._root
       .getElementById("/compressor/drive")
-      .addEventListener("input", (e) =>
-        this._plug.audioNode.setParamValue("/compressor/drive", e.target.value)
-      );
+      .addEventListener("input", (e) => this._plug.audioNode.setParamValue("/compressor/drive", e.target.value));
     this._root
       .getElementById("/compressor/middle")
-      .addEventListener("input", (e) =>
-        this._plug.audioNode.setParamValue("/compressor/middle", e.target.value)
-      );
+      .addEventListener("input", (e) => this._plug.audioNode.setParamValue("/compressor/middle", e.target.value));
     this._root
       .getElementById("/compressor/treble")
-      .addEventListener("input", (e) =>
-        this._plug.audioNode.setParamValue("/compressor/treble", e.target.value)
-      );
+      .addEventListener("input", (e) => this._plug.audioNode.setParamValue("/compressor/treble", e.target.value));
     this._root
       .getElementById("/compressor/voice")
-      .addEventListener("input", (e) =>
-        this._plug.audioNode.setParamValue("/compressor/voice", e.target.value)
-      );
+      .addEventListener("input", (e) => this._plug.audioNode.setParamValue("/compressor/voice", e.target.value));
     this._root
       .getElementById("/compressor/volume")
-      .addEventListener("input", (e) =>
-        this._plug.audioNode.setParamValue("/compressor/volume", e.target.value)
-      );
+      .addEventListener("input", (e) => this._plug.audioNode.setParamValue("/compressor/volume", e.target.value));
   }
 
   setSliders() {}
@@ -1169,10 +1142,7 @@ export default class compressorGui extends HTMLElement {
     this._root
       .getElementById("/compressor/99_bypass")
       .addEventListener("change", (e) =>
-        this._plug.audioNode.setParamValue(
-          "/compressor/99_bypass",
-          1 - e.target.value
-        )
+        this._plug.audioNode.setParamValue("/compressor/99_bypass", 1 - e.target.value)
       );
   }
 
