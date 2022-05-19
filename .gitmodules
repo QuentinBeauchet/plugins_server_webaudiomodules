@@ -2,3 +2,12 @@
 	path = TER
 	url = https://github.com/michael-marynowicz/TER.git
 	branch = v1-relative
+[submodule "plugins/utils/sdk"]
+	path = plugins/utils/sdk
+	url = https://github.com/webaudiomodules/sdk.git
+[submodule "plugins/utils/sdk-parammgr"]
+	path = plugins/utils/sdk-parammgr
+	url = https://github.com/webaudiomodules/sdk-parammgr.git
+[submodule "plugins/utils/api"]
+	path = plugins/utils/api
+	url = https://github.com/webaudiomodules/api.git
