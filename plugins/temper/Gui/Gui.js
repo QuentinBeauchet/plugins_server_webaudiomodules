@@ -78,8 +78,8 @@ export default class temperGui extends HTMLElement {
       zoom: 1;
     }
   </style>
-  <div id="temper" class="resize-drag my-pedal target-style-container gradiant-target" style="border: 1px dashed rgb(73, 73, 73); text-align: center; display: grid; vertical-align: baseline; padding: 1px; margin: 2px; box-sizing: border-box; background-size: 100% 100%; box-shadow: rgba(0, 0, 0, 0.7) 4px 5px 6px, rgba(0, 0, 0, 0.2) -2px -2px 5px 0px inset, rgba(255, 255, 255, 0.2) 3px 1px 1px 4px inset, rgba(0, 0, 0, 0.9) 1px 0px 1px 0px, rgba(0, 0, 0, 0.9) 0px 2px 1px 0px, rgba(0, 0, 0, 0.9) 1px 1px 1px 0px; border-radius: 15px; background-color: grey; touch-action: none; width: 400px; position: relative; top: 0px; left: 0px; height: 450px; transform: none; background-image: url(&quot;//./img/background/metal6.jpg&quot;); grid-template-rows: repeat(3, 1fr);" data-x="44.960879769945734" data-y="11.960879769945734">
-    <div id="grid" style="display: grid; grid-template-columns: repeat(3, 1fr);">
+  <div id="temper" class="resize-drag my-pedal target-style-container gradiant-target" style="border: 1px dashed rgb(73, 73, 73); text-align: center; display: grid; vertical-align: baseline; padding: 1px; margin: 2px; box-sizing: border-box; background-size: 100% 100%; box-shadow: rgba(0, 0, 0, 0.7) 4px 5px 6px, rgba(0, 0, 0, 0.2) -2px -2px 5px 0px inset, rgba(255, 255, 255, 0.2) 3px 1px 1px 4px inset, rgba(0, 0, 0, 0.9) 1px 0px 1px 0px, rgba(0, 0, 0, 0.9) 0px 2px 1px 0px, rgba(0, 0, 0, 0.9) 1px 1px 1px 0px; border-radius: 15px; background-color: grey; touch-action: none; width: 500px; position: relative; top: 0px; left: 0px; height: 300px; transform: none; background-image: url(&quot;////./img/background/metal6.jpg&quot;); /* grid-template-columns: 90% 10%; */ grid-template-rows: 80% 1fr;" data-x="44.960879769945734" data-y="11.960879769945734">
+    <div id="grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr;/* height: 100%; */">
       <div style="display: grid; grid-template-rows: repeat(4, 1fr);height: fit-content;align-self: center;">
         <div class="drag" style="
             padding: 1px;
@@ -91,62 +91,62 @@ export default class temperGui extends HTMLElement {
             position: static;
             place-self: center;
           " data-x="20" data-y="-182">
-          <webaudio-knob id="/temper/Cutoff" src="//./img/knobs/MiniMoog_Main.png" sprites="100" min="100" max="20000" step="1" width="50" height="50" style="touch-action: none; display: block"><style>
-  
-  .webaudioctrl-tooltip{
-    display:inline-block;
-    position:absolute;
-    margin:0 -1000px;
-    z-index: 999;
-    background:#eee;
-    color:#000;
-    border:1px solid #666;
-    border-radius:4px;
-    padding:5px 10px;
-    text-align:center;
-    left:0; top:0;
-    font-size:11px;
-    opacity:0;
-    visibility:hidden;
-  }
-  .webaudioctrl-tooltip:before{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -8px;
-    border: 8px solid transparent;
-    border-top: 8px solid #666;
-  }
-  .webaudioctrl-tooltip:after{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -6px;
-    border: 6px solid transparent;
-    border-top: 6px solid #eee;
-  }
-  
-  webaudio-knob{
-    display:inline-block;
-    position:relative;
-    margin:0;
-    padding:0;
-    cursor:pointer;
-    font-family: sans-serif;
-    font-size: 11px;
-  }
-  .webaudio-knob-body{
-    display:inline-block;
-    position:relative;
-    z-index:1;
-    margin:0;
-    padding:0;
-  }
-  </style>
-  <div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;//./img/knobs/MiniMoog_Main.png&quot;); background-size: 50px 5050px; outline: none; width: 50px; height: 50px; background-position: 0px -5000px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip"></div>
-  </webaudio-knob>
+          <webaudio-knob id="/temper/Cutoff" src="////./img/knobs/knob2.png" sprites="100" min="100" max="20000" step="1" width="40" height="40" style="touch-action: none; display: block"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -8px;
+	border: 8px solid transparent;
+	border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -6px;
+	border: 6px solid transparent;
+	border-top: 6px solid #eee;
+}
+
+webaudio-knob{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.webaudio-knob-body{
+  display:inline-block;
+  position:relative;
+  z-index:1;
+  margin:0;
+  padding:0;
+}
+</style>
+<div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;////./img/knobs/knob2.png&quot;); background-size:40px 5050px; outline: none; width:40px; height:40px; background-position: 0px -5000px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip" style="display: inline-block; width: auto; height: auto; transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; left: 1010.94px; top: -44px;">0</div>
+</webaudio-knob>
         </div>
   
         <label for="Cutoff" style="
@@ -172,62 +172,62 @@ export default class temperGui extends HTMLElement {
             position: static;
             place-self: center;
           " data-x="34" data-y="-378">
-          <webaudio-knob id="/temper/Resonance" src="//./img/knobs/MiniMoog_Main.png" sprites="100" min="1" max="8" step="0.001" width="50" height="50" style="touch-action: none; display: block"><style>
-  
-  .webaudioctrl-tooltip{
-    display:inline-block;
-    position:absolute;
-    margin:0 -1000px;
-    z-index: 999;
-    background:#eee;
-    color:#000;
-    border:1px solid #666;
-    border-radius:4px;
-    padding:5px 10px;
-    text-align:center;
-    left:0; top:0;
-    font-size:11px;
-    opacity:0;
-    visibility:hidden;
-  }
-  .webaudioctrl-tooltip:before{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -8px;
-    border: 8px solid transparent;
-    border-top: 8px solid #666;
-  }
-  .webaudioctrl-tooltip:after{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -6px;
-    border: 6px solid transparent;
-    border-top: 6px solid #eee;
-  }
-  
-  webaudio-knob{
-    display:inline-block;
-    position:relative;
-    margin:0;
-    padding:0;
-    cursor:pointer;
-    font-family: sans-serif;
-    font-size: 11px;
-  }
-  .webaudio-knob-body{
-    display:inline-block;
-    position:relative;
-    z-index:1;
-    margin:0;
-    padding:0;
-  }
-  </style>
-  <div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;//./img/knobs/MiniMoog_Main.png&quot;); background-size: 50px 5050px; outline: none; width: 50px; height: 50px; background-position: 0px 0px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip" style="display: inline-block; width: auto; height: auto; transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; left: 1000.23px; top: -44px;">0.000</div>
-  </webaudio-knob>
+          <webaudio-knob id="/temper/Resonance" src="////./img/knobs/knob2.png" sprites="100" min="1" max="8" step="0.001" width="40" height="40" style="touch-action: none; display: block"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -8px;
+	border: 8px solid transparent;
+	border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -6px;
+	border: 6px solid transparent;
+	border-top: 6px solid #eee;
+}
+
+webaudio-knob{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.webaudio-knob-body{
+  display:inline-block;
+  position:relative;
+  z-index:1;
+  margin:0;
+  padding:0;
+}
+</style>
+<div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;////./img/knobs/knob2.png&quot;); background-size:40px 5050px; outline: none; width:40px; height:40px; background-position: 0px 0px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip" style="display: inline-block; width: auto; height: auto; transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; left: 1000.23px; top: -44px;">0.000</div>
+</webaudio-knob>
         </div>
         <label for="Resonance" style="
             text-align: center;
@@ -243,7 +243,7 @@ export default class temperGui extends HTMLElement {
             place-self: center;
           " class="drag" contenteditable="false" data-x="-2" data-y="-347" font="Galada">Resonance</label>
       </div>
-      <div style="display: grid; grid-template-rows: repeat(6, 1fr);height: fit-content;">
+      <div style="display: grid; /* grid-template-rows: repeat(6, 1fr); */height: fit-content;">
         <div class="drag" style="
             padding: 1px;
             margin: 1px;
@@ -254,62 +254,62 @@ export default class temperGui extends HTMLElement {
             position: static;
             place-self: center;
           " data-x="190" data-y="-84">
-          <webaudio-knob id="/temper/Curve" src="//./img/knobs/MiniMoog_Main.png" sprites="100" min="0.1" max="4" step="0.001" width="50" height="50" style="touch-action: none; display: block"><style>
-  
-  .webaudioctrl-tooltip{
-    display:inline-block;
-    position:absolute;
-    margin:0 -1000px;
-    z-index: 999;
-    background:#eee;
-    color:#000;
-    border:1px solid #666;
-    border-radius:4px;
-    padding:5px 10px;
-    text-align:center;
-    left:0; top:0;
-    font-size:11px;
-    opacity:0;
-    visibility:hidden;
-  }
-  .webaudioctrl-tooltip:before{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -8px;
-    border: 8px solid transparent;
-    border-top: 8px solid #666;
-  }
-  .webaudioctrl-tooltip:after{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -6px;
-    border: 6px solid transparent;
-    border-top: 6px solid #eee;
-  }
-  
-  webaudio-knob{
-    display:inline-block;
-    position:relative;
-    margin:0;
-    padding:0;
-    cursor:pointer;
-    font-family: sans-serif;
-    font-size: 11px;
-  }
-  .webaudio-knob-body{
-    display:inline-block;
-    position:relative;
-    z-index:1;
-    margin:0;
-    padding:0;
-  }
-  </style>
-  <div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;//./img/knobs/MiniMoog_Main.png&quot;); background-size: 50px 5050px; outline: none; width: 50px; height: 50px; background-position: 0px -1150px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip" style="display: inline-block; width: auto; height: auto; transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; left: 1000.23px; top: -44px;">0.000</div>
-  </webaudio-knob>
+          <webaudio-knob id="/temper/Curve" src="////./img/knobs/knob2.png" sprites="100" min="0.1" max="4" step="0.001" width="40" height="40" style="touch-action: none; display: block"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -8px;
+	border: 8px solid transparent;
+	border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -6px;
+	border: 6px solid transparent;
+	border-top: 6px solid #eee;
+}
+
+webaudio-knob{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.webaudio-knob-body{
+  display:inline-block;
+  position:relative;
+  z-index:1;
+  margin:0;
+  padding:0;
+}
+</style>
+<div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;////./img/knobs/knob2.png&quot;); background-size:40px 5050px; outline: none; width:40px; height:40px; background-position: 0px -1150px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip"></div>
+</webaudio-knob>
         </div>
   
         <label for="Curve" style="
@@ -335,62 +335,62 @@ export default class temperGui extends HTMLElement {
             position: static;
             place-self: center;
           " data-x="195.96087976994568" data-y="-116.03912023005415">
-          <webaudio-knob id="/temper/Drive" src="//./img/knobs/MiniMoog_Main.png" sprites="100" min="-10" max="10" step="0.001" width="50" height="50" style="touch-action: none; display: block"><style>
-  
-  .webaudioctrl-tooltip{
-    display:inline-block;
-    position:absolute;
-    margin:0 -1000px;
-    z-index: 999;
-    background:#eee;
-    color:#000;
-    border:1px solid #666;
-    border-radius:4px;
-    padding:5px 10px;
-    text-align:center;
-    left:0; top:0;
-    font-size:11px;
-    opacity:0;
-    visibility:hidden;
-  }
-  .webaudioctrl-tooltip:before{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -8px;
-    border: 8px solid transparent;
-    border-top: 8px solid #666;
-  }
-  .webaudioctrl-tooltip:after{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -6px;
-    border: 6px solid transparent;
-    border-top: 6px solid #eee;
-  }
-  
-  webaudio-knob{
-    display:inline-block;
-    position:relative;
-    margin:0;
-    padding:0;
-    cursor:pointer;
-    font-family: sans-serif;
-    font-size: 11px;
-  }
-  .webaudio-knob-body{
-    display:inline-block;
-    position:relative;
-    z-index:1;
-    margin:0;
-    padding:0;
-  }
-  </style>
-  <div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;//./img/knobs/MiniMoog_Main.png&quot;); background-size: 50px 5050px; outline: none; width: 50px; height: 50px; background-position: 0px -3500px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip" style="display: inline-block; width: auto; height: auto; transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; left: 1000.23px; top: -44px;">0.000</div>
-  </webaudio-knob>
+          <webaudio-knob id="/temper/Drive" src="////./img/knobs/knob2.png" sprites="100" min="-10" max="10" step="0.001" width="40" height="40" style="touch-action: none; display: block"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -8px;
+	border: 8px solid transparent;
+	border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -6px;
+	border: 6px solid transparent;
+	border-top: 6px solid #eee;
+}
+
+webaudio-knob{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.webaudio-knob-body{
+  display:inline-block;
+  position:relative;
+  z-index:1;
+  margin:0;
+  padding:0;
+}
+</style>
+<div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;////./img/knobs/knob2.png&quot;); background-size:40px 5050px; outline: none; width:40px; height:40px; background-position: 0px -3500px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip"></div>
+</webaudio-knob>
         </div>
         <label for="Drive" style="
             text-align: center;
@@ -415,62 +415,62 @@ export default class temperGui extends HTMLElement {
             position: static;
             place-self: center;
           " data-x="206" data-y="-364">
-          <webaudio-knob id="/temper/Saturation" src="//./img/knobs/MiniMoog_Main.png" sprites="100" min="0" max="1" step="0.001" width="50" height="50" style="touch-action: none; display: block"><style>
-  
-  .webaudioctrl-tooltip{
-    display:inline-block;
-    position:absolute;
-    margin:0 -1000px;
-    z-index: 999;
-    background:#eee;
-    color:#000;
-    border:1px solid #666;
-    border-radius:4px;
-    padding:5px 10px;
-    text-align:center;
-    left:0; top:0;
-    font-size:11px;
-    opacity:0;
-    visibility:hidden;
-  }
-  .webaudioctrl-tooltip:before{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -8px;
-    border: 8px solid transparent;
-    border-top: 8px solid #666;
-  }
-  .webaudioctrl-tooltip:after{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -6px;
-    border: 6px solid transparent;
-    border-top: 6px solid #eee;
-  }
-  
-  webaudio-knob{
-    display:inline-block;
-    position:relative;
-    margin:0;
-    padding:0;
-    cursor:pointer;
-    font-family: sans-serif;
-    font-size: 11px;
-  }
-  .webaudio-knob-body{
-    display:inline-block;
-    position:relative;
-    z-index:1;
-    margin:0;
-    padding:0;
-  }
-  </style>
-  <div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;//./img/knobs/MiniMoog_Main.png&quot;); background-size: 50px 5050px; outline: none; width: 50px; height: 50px; background-position: 0px -5000px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip" style="display: inline-block; width: auto; height: auto; transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; left: 1000.23px; top: -44px;">0.000</div>
-  </webaudio-knob>
+          <webaudio-knob id="/temper/Saturation" src="////./img/knobs/knob2.png" sprites="100" min="0" max="1" step="0.001" width="40" height="40" style="touch-action: none; display: block"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -8px;
+	border: 8px solid transparent;
+	border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -6px;
+	border: 6px solid transparent;
+	border-top: 6px solid #eee;
+}
+
+webaudio-knob{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.webaudio-knob-body{
+  display:inline-block;
+  position:relative;
+  z-index:1;
+  margin:0;
+  padding:0;
+}
+</style>
+<div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;////./img/knobs/knob2.png&quot;); background-size:40px 5050px; outline: none; width:40px; height:40px; background-position: 0px -5000px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip" style="display: inline-block; width: auto; height: auto; transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; left: 1000.23px; top: -44px;">0.000</div>
+</webaudio-knob>
         </div>
         <label for="Saturation" style="
             text-align: center;
@@ -497,62 +497,62 @@ export default class temperGui extends HTMLElement {
             position: static;
             place-self: center;
           " data-x="359" data-y="-315">
-          <webaudio-knob id="/temper/Feedback" src="//./img/knobs/MiniMoog_Main.png" sprites="100" min="-60" max="-24" step="1" width="50" height="50" style="touch-action: none; display: block"><style>
-  
-  .webaudioctrl-tooltip{
-    display:inline-block;
-    position:absolute;
-    margin:0 -1000px;
-    z-index: 999;
-    background:#eee;
-    color:#000;
-    border:1px solid #666;
-    border-radius:4px;
-    padding:5px 10px;
-    text-align:center;
-    left:0; top:0;
-    font-size:11px;
-    opacity:0;
-    visibility:hidden;
-  }
-  .webaudioctrl-tooltip:before{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -8px;
-    border: 8px solid transparent;
-    border-top: 8px solid #666;
-  }
-  .webaudioctrl-tooltip:after{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -6px;
-    border: 6px solid transparent;
-    border-top: 6px solid #eee;
-  }
-  
-  webaudio-knob{
-    display:inline-block;
-    position:relative;
-    margin:0;
-    padding:0;
-    cursor:pointer;
-    font-family: sans-serif;
-    font-size: 11px;
-  }
-  .webaudio-knob-body{
-    display:inline-block;
-    position:relative;
-    z-index:1;
-    margin:0;
-    padding:0;
-  }
-  </style>
-  <div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;//./img/knobs/MiniMoog_Main.png&quot;); background-size: 50px 5050px; outline: none; width: 50px; height: 50px; background-position: 0px 0px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip" style="display: inline-block; width: auto; height: auto; transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; left: 1006.05px; top: -44px;">-60</div>
-  </webaudio-knob>
+          <webaudio-knob id="/temper/Feedback" src="////./img/knobs/knob2.png" sprites="100" min="-60" max="-24" step="1" width="40" height="40" style="touch-action: none; display: block"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -8px;
+	border: 8px solid transparent;
+	border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -6px;
+	border: 6px solid transparent;
+	border-top: 6px solid #eee;
+}
+
+webaudio-knob{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.webaudio-knob-body{
+  display:inline-block;
+  position:relative;
+  z-index:1;
+  margin:0;
+  padding:0;
+}
+</style>
+<div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;////./img/knobs/knob2.png&quot;); background-size:40px 5050px; outline: none; width:40px; height:40px; background-position: 0px 0px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip"></div>
+</webaudio-knob>
         </div>
         <label for="Feedback" style="
             text-align: center;
@@ -577,62 +577,62 @@ export default class temperGui extends HTMLElement {
             position: static;
             place-self: center;
           " data-x="357" data-y="-285">
-          <webaudio-knob id="/temper/Level" src="//./img/knobs/MiniMoog_Main.png" sprites="100" min="-24" max="24" step="1" width="50" height="50" style="touch-action: none; display: block"><style>
-  
-  .webaudioctrl-tooltip{
-    display:inline-block;
-    position:absolute;
-    margin:0 -1000px;
-    z-index: 999;
-    background:#eee;
-    color:#000;
-    border:1px solid #666;
-    border-radius:4px;
-    padding:5px 10px;
-    text-align:center;
-    left:0; top:0;
-    font-size:11px;
-    opacity:0;
-    visibility:hidden;
-  }
-  .webaudioctrl-tooltip:before{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -8px;
-    border: 8px solid transparent;
-    border-top: 8px solid #666;
-  }
-  .webaudioctrl-tooltip:after{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -6px;
-    border: 6px solid transparent;
-    border-top: 6px solid #eee;
-  }
-  
-  webaudio-knob{
-    display:inline-block;
-    position:relative;
-    margin:0;
-    padding:0;
-    cursor:pointer;
-    font-family: sans-serif;
-    font-size: 11px;
-  }
-  .webaudio-knob-body{
-    display:inline-block;
-    position:relative;
-    z-index:1;
-    margin:0;
-    padding:0;
-  }
-  </style>
-  <div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;//./img/knobs/MiniMoog_Main.png&quot;); background-size: 50px 5050px; outline: none; width: 50px; height: 50px; background-position: 0px -2150px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip" style="display: inline-block; width: auto; height: auto; transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden; left: 1010.94px; top: -44px;">0</div>
-  </webaudio-knob>
+          <webaudio-knob id="/temper/Level" src="////./img/knobs/knob2.png" sprites="100" min="-24" max="24" step="1" width="40" height="40" style="touch-action: none; display: block"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -8px;
+	border: 8px solid transparent;
+	border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -6px;
+	border: 6px solid transparent;
+	border-top: 6px solid #eee;
+}
+
+webaudio-knob{
+  display:inline-block;
+  position:relative;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.webaudio-knob-body{
+  display:inline-block;
+  position:relative;
+  z-index:1;
+  margin:0;
+  padding:0;
+}
+</style>
+<div class="webaudio-knob-body" tabindex="1" touch-action="none" style="background-image: url(&quot;////./img/knobs/knob2.png&quot;); background-size:40px 5050px; outline: none; width:40px; height:40px; background-position: 0px -2150px; transform: rotate(0deg);"></div><div class="webaudioctrl-tooltip"></div>
+</webaudio-knob>
         </div>
         <label for="Level" style="
             text-align: center;
@@ -649,19 +649,18 @@ export default class temperGui extends HTMLElement {
           " class="drag" contenteditable="false" data-x="324" data-y="-237" font="Galada">Level</label>
       </div>
     </div>
-    <label for="temper" style="
-        display: block;
-        touch-action: none;
-        position: static;
-        z-index: 1;
-        width: 250px;
-        border: none;
-        font-size: 40px;
-        font-family: Galada;
-        color: rgb(255, 255, 255);
-        place-self: center;
-      " class="drag" contenteditable="false" data-x="113" data-y="342" font="Galada">TemperDisto</label>
-    <div class="drag" style="
+    <div style="display: flex;align-items: center;justify-content: center;"><label for="temper" style="
+    display: block;
+    touch-action: none;
+    position: static;
+    z-index: 1;
+    width: 250px;
+    border: none;
+    font-size: 40px;
+    font-family: Galada;
+    color: rgb(255, 255, 255);
+    place-self: center;
+  " class="drag" contenteditable="false" data-x="113" data-y="342" font="Galada">TemperDisto</label><div class="drag" style="
         padding: 1px;
         margin: 1px;
         text-align: center;
@@ -673,60 +672,61 @@ export default class temperGui extends HTMLElement {
         /* height: 80px; */
         place-self: center;
       " data-x="172.11973027839076" data-y="386.8340159926764">
-      <webaudio-switch id="/temper/99_bypass" src="//./img/switches/switch_1.png" sprites="100" width="64" height="40" style="touch-action: none"><style>
+      <webaudio-switch id="/temper/99_bypass" src="////./img/switches/switch_1.png" sprites="100" width="64" height="40" style="touch-action: none"><style>
+
+.webaudioctrl-tooltip{
+  display:inline-block;
+  position:absolute;
+  margin:0 -1000px;
+  z-index: 999;
+  background:#eee;
+  color:#000;
+  border:1px solid #666;
+  border-radius:4px;
+  padding:5px 10px;
+  text-align:center;
+  left:0; top:0;
+  font-size:11px;
+  opacity:0;
+  visibility:hidden;
+}
+.webaudioctrl-tooltip:before{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -8px;
+	border: 8px solid transparent;
+	border-top: 8px solid #666;
+}
+.webaudioctrl-tooltip:after{
+  content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+ 	margin-left: -6px;
+	border: 6px solid transparent;
+	border-top: 6px solid #eee;
+}
+
+webaudio-switch{
+  display:inline-block;
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  font-size: 11px;
+  cursor:pointer;
+}
+.webaudio-switch-body{
+  display:inline-block;
+  margin:0;
+  padding:0;
+}
+</style>
+<div class="webaudio-switch-body" tabindex="1" touch-action="none" style="background-image: url(&quot;////./img/switches/switch_1.png&quot;); background-size: 100% 200%; width: 64px; height: 40px; outline: none; background-position: 0px 0px;"><div class="webaudioctrl-tooltip"></div></div>
+</webaudio-switch>
+    </div></div>
   
-  .webaudioctrl-tooltip{
-    display:inline-block;
-    position:absolute;
-    margin:0 -1000px;
-    z-index: 999;
-    background:#eee;
-    color:#000;
-    border:1px solid #666;
-    border-radius:4px;
-    padding:5px 10px;
-    text-align:center;
-    left:0; top:0;
-    font-size:11px;
-    opacity:0;
-    visibility:hidden;
-  }
-  .webaudioctrl-tooltip:before{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -8px;
-    border: 8px solid transparent;
-    border-top: 8px solid #666;
-  }
-  .webaudioctrl-tooltip:after{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-     margin-left: -6px;
-    border: 6px solid transparent;
-    border-top: 6px solid #eee;
-  }
-  
-  webaudio-switch{
-    display:inline-block;
-    margin:0;
-    padding:0;
-    font-family: sans-serif;
-    font-size: 11px;
-    cursor:pointer;
-  }
-  .webaudio-switch-body{
-    display:inline-block;
-    margin:0;
-    padding:0;
-  }
-  </style>
-  <div class="webaudio-switch-body" tabindex="1" touch-action="none" style="background-image: url(&quot;//./img/switches/switch_1.png&quot;); background-size: 100% 200%; width: 50px; height: 50px; outline: none; background-position: 0px -100%;"><div class="webaudioctrl-tooltip" style="transition: opacity 0.1s ease 0s, visibility 0.1s ease 0s; opacity: 0; visibility: hidden;"></div></div>
-  </webaudio-switch>
-    </div>
   </div>
   `;
     this.isOn;
