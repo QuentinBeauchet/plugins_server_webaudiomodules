@@ -20,10 +20,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/repositories", (req, res) => {
-  res.send(repositories);
-});
-
 app.get("/wams", (req, res) => {
   res.send(plugins.map((plugin) => `${req.protocol}://${req.get("Host")}/plugins/${plugin}/`));
 });
