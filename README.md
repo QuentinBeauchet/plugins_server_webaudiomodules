@@ -1,7 +1,7 @@
 <h1>Better styling tool for faust generated plugins</h1>
 
 ```js
-cleanup = (ignore) => {
+window.instance.gui.__proto__.cleanup = function(ignore){
   var grid = document.createElement("div");
   grid.id = "grid";
   grid.style.display = "grid";
@@ -16,6 +16,8 @@ cleanup = (ignore) => {
     el.style.bottom = "";
     el.style.left = "";
     el.style.right = "";
+    el.style.height = "";
+    el.style.width = "";
     el.style.position = "static";
     el.style.transform = "";
     el.style.alignSelf = "center";
@@ -32,25 +34,21 @@ cleanup = (ignore) => {
 
   var pedal = this._root.querySelector(".my-pedal");
   pedal.style.display = "grid";
+  pedal.style.borderStyle = "solid";
   pedal.style.gridTemplateRows = `repeat(${ignore.length + 1}, 1fr)`;
+  pedal.style.border = "none";
 
   pedal.appendChild(grid);
 
   console.log(this.cleanUpChilds);
 };
-```
-
-```js
-reOrder = (order) => {
+window.instance.gui.__proto__.reOrder = function(order){
   this._root.querySelector(".my-pedal").innerHTML = "";
   order.forEach((i) => {
     this._root.querySelector(".my-pedal").appendChild(this.cleanUpChilds[i]);
   });
 };
-```
-
-```js
-reOrderGrid = (order) => {
+window.instance.gui.__proto__.reOrderGrid = function(order){
   var childs = [];
   var grid = this._root.getElementById("grid");
   grid.childNodes.forEach((el) => {
@@ -62,17 +60,14 @@ reOrderGrid = (order) => {
     grid.appendChild(childs[i]);
   });
 };
-```
-
-```js
-toHTML = () => {
+window.instance.gui.__proto__.toHTML = function(){
   var html = this._root.innerHTML.split("<!-- Code injected by live-server -->")[0].split(this.basePath).join("");
   console.log(html);
 };
 ```
 
-1. Insert this code into Gui.js
-2. Run host.js with liveServer
+1. Run host.js with liveServer
+2. Then paste this code in the console
 3. Then from the console run
 
 ```js
