@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-
-const repositories = require("./repositories.json");
 const plugins = require("./plugins.json");
 
 const app = express();
