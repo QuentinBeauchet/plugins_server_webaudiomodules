@@ -535,7 +535,6 @@ webaudio-knob{
           if (this._setValue(v) && f) this.sendEvent("input"), this.sendEvent("change");
         }
         wheel(e) {
-          console.log("WHEEEL");
           let delta = (this.max - this.min) * 0.01;
           delta = e.deltaY > 0 ? -delta : delta;
           if (!e.shiftKey) delta *= 5;
