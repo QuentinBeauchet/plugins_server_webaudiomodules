@@ -16,5 +16,8 @@
   "kbverb",
   "JpVerb",
   "blipper",
-  "DualPitShifter"
+  "DualPitShifter",
+  "StereoFreqShifter",
+  "WeirdPhaser",
+  "ThruZeroFlanger"
 ]
