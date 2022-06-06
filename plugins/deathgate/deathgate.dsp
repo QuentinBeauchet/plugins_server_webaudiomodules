@@ -42,8 +42,8 @@ import("stdfaust.lib");
 
 process = output with {
   
-  deadzone_knob = ba.db2linear(vslider("Dead Zone [style:knob]", -100, -120, 0, 0.001));
-  noizegate_knob = vslider("Noise Gate [style:knob]", -120, -120, 0, 0.001);
+  deadzone_knob = ba.db2linear(vslider("DeadZone[style:knob]", -100, -120, 0, 0.001));
+  noizegate_knob = vslider("NoiseGate[style:knob]", -120, -120, 0, 0.001);
   
   deadzone = _ <: (max(deadzone_knob) : -(deadzone_knob)),
     (min(-deadzone_knob) : +(deadzone_knob)) : + ;
