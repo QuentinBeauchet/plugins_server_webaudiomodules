@@ -19,5 +19,6 @@
   "DualPitchShifter",
   "StereoFreqShifter",
   "WeirdPhaser",
-  "ThruZeroFlanger"
+  "ThruZeroFlanger",
+  "graphicEqualizer"
 ]
