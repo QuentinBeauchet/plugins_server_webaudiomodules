@@ -1,7 +1,7 @@
 import WebAudioModule from "../utils/sdk/src/WebAudioModule.js";
 import CompositeAudioNode from "../utils/sdk-parammgr/src/CompositeAudioNode.js";
 import ParamMgrFactory from "../utils/sdk-parammgr/src/ParamMgrFactory.js";
-import fetchModule from "./fetchModule.js";
+
 import { createElement } from "./Gui/index.js";
 
 class Kpp_fuzzNode extends CompositeAudioNode {
@@ -50,7 +50,7 @@ export default class Kpp_fuzzPlugin extends WebAudioModule {
 
   async initialize(state) {
     await this._loadDescriptor();
-    const imported = await fetchModule("./Node.js");
+    const imported = await import("./Node.js");
     this._PluginFactory = imported[Object.keys(imported)[0]];
     return super.initialize(state);
   }
