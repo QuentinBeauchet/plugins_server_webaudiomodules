@@ -574,9 +574,6 @@ export default class GraphicEQHTMLElement extends HTMLElement {
           this.shiftPressed,
           this.dy
         );
-
-        console.log(this.plugin.audioNode.filters);
-
         break;
     }
     return false;
