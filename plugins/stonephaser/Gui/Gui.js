@@ -524,7 +524,7 @@ webaudio-knob{
   }
 }
 try {
-  customElements.define("wap-untitled", untitledGui);
+  customElements.define("wap-stonephaser", untitledGui);
   console.log("Element defined");
 } catch (error) {
   console.log(error);
