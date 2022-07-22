@@ -1,5 +1,5 @@
 [submodule "TER"]
-	path = TER
+	path = PedalBoard
 	url = https://github.com/michael-marynowicz/TER.git
 	branch = main
 [submodule "plugins/utils/sdk"]
