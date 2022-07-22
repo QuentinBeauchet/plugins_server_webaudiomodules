@@ -22,7 +22,7 @@ app.get("/wams", (req, res) => {
   res.send(plugins.map((plugin) => `${req.protocol}://${req.get("Host")}/plugins/${plugin}/`));
 });
 
-app.use("/", express.static(path.join(__dirname, "./TER")));
+app.use("/", express.static(path.join(__dirname, "./PedalBoard")));
 
 app.use("/plugins", express.static(path.join(__dirname, "./plugins")));
 
